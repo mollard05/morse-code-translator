@@ -13,7 +13,7 @@
 //#define CLOCKS_PER_SEC CLOCKS_PER_SEC 100
 
 // declare global variables e.g., the time when the button is pressed 
-int pressed ;
+int pressed = 0;
 
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
@@ -21,7 +21,7 @@ int pressed ;
 void decoder();
 
 // check if the button press is a dot or a dash
-void checkButton(clock_t start, clock_t end);
+void checkButton();
 
 int main() {
 	timer_hw->dbgpause = 0;
@@ -44,49 +44,22 @@ int main() {
 	//display welcome message
 
 	while (true) {
-		clock_t start;
-		clock_t end;
-
-		if (gpio_get(BUTTON_PIN)) {
-			start = clock();
-		} else if (gpio_get(BUTTON_PIN) == false){
-			end = clock();
+		
+		
+		
+		pressed = 1;
+		while (gpio_get(BUTTON_PIN)){	
+			pressed = 2;
+			//count++;
+            // record how long the button is pressed
+            // .....
+			printf("This line is a test\n");  // you can remove this line
+			//sleep_ms(150); // adjust the sleep_ms as required
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		//bool buttonPressed = gpio_get(BUTTON_PIN);
-		/*if (buttonPressed) {
-		*	printf("The button has been pressed");
-		*}
-		*/
-		//int count = 0;
-		// pressed = 0;
-		// while (gpio_get(BUTTON_PIN)){	
-		// 	pressed = 2;
-		// 	//count++;
-        //     // record how long the button is pressed
-        //     // .....
-		// 	printf("This line is a test\n");  // you can remove this line
-		// 	//sleep_ms(150); // adjust the sleep_ms as required
-
-
-		// }
         // check if the button press is a dot or a dash
-		checkButton(start, end);
+		if (pressed == 2) {
+			checkButton();
+		}
 	}
 	
 }
@@ -101,19 +74,18 @@ void decoder(){
 //     // a function to be implemented
 // }
 
-void checkButton(clock_t start, clock_t end){
-	 clock_t startv = start;
-	 clock_t endv = end;
-
-	// if (pressed == 1){
-	// 	start = clock();
-	// 	printf("%f \n",(double)start);
-	// }
-	// if (pressed == 0){
-	// 	end = clock();
-	// 	printf("%f \n",(double)end);
-	// }
-	double timeTaken = (double)(endv - startv) / CLOCKS_PER_SEC;
-	printf("%f \n",timeTaken);
+void checkButton(){
+	clock_t start;
+	clock_t end;
+	if (pressed == 2){
+		start = clock();
+		printf("%f \n",(double)start);
+	}
+	if (pressed == 1){
+		end = clock();
+		printf("%f \n",(double)end);
+	}
+	double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
+	printf("The time taken was %f \n",timeTaken);
 }
 
