@@ -1,8 +1,4 @@
-/**
- * The given template is a guideline for your coursework only.
- * You are free to edit/create any functions and variables.
- * You can add extra C files if required.
-*/
+
 #include <stdio.h>
 #include <string.h>
 #include "pico/stdlib.h"
@@ -42,6 +38,7 @@ int main() {
 	sleep_ms(500);
 	seven_segment_off();
 	//display welcome message
+	printf("Welcome!\n");
 
 	while (true) {
 		
@@ -89,3 +86,28 @@ void checkButton(){
 	printf("The time taken was %f \n",timeTaken);
 }
 
+/*
+int pressed;
+int not_pressed;
+need a letter array to add the dots and dashes
+string word to put letters into
+
+while (true) {
+  
+  while (gpio_get(BUTTON_PIN)){
+      // record how long the button is pressed
+      pressed = pressed +1;
+      not_pressed = 0;
+      sleep_ms(50); // adjust the sleep_ms as required
+      // .....
+  }
+// ....... 
+// more to be done ...
+	not pressed = 1
+	addsignal to letter array
+	pressed = 0 
+	sleep(50) 
+	..
+	if slept for 700ms pass to letter function
+
+*/
