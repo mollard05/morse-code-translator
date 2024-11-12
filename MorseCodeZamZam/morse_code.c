@@ -10,14 +10,15 @@
 
 // declare global variables e.g., the time when the button is pressed 
 int pressed = 0;
+int notpressed = 0;
 
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
 // given the user input, you can decode if the input is a character
-void decoder();
+void decoder(int pressed);
 
 // check if the button press is a dot or a dash
-void checkButton();
+void checkButton(int notPressed);
 
 int main() {
 	timer_hw->dbgpause = 0;
@@ -38,31 +39,48 @@ int main() {
 	sleep_ms(500);
 	seven_segment_off();
 	//display welcome message
-	printf("Welcome!\n");
+	printf("\nWelcome!\n");
 
 	while (true) {
 		
-		
-		
-		pressed = 1;
-		while (gpio_get(BUTTON_PIN)){	
-			pressed = 2;
-			//count++;
-            // record how long the button is pressed
-            // .....
-			printf("This line is a test\n");  // you can remove this line
-			//sleep_ms(150); // adjust the sleep_ms as required
+		while (gpio_get(BUTTON_PIN)){
+			pressed = pressed + 1;
+			notpressed = 0;
+			sleep_ms(50);
+
+			// pressed = 2;
+			// //count++;
+            // // record how long the button is pressed
+            // // .....
+			// printf("This line is a test\n");  // you can remove this line
+			// //sleep_ms(150); // adjust the sleep_ms as required
 		}
-        // check if the button press is a dot or a dash
-		if (pressed == 2) {
-			checkButton();
+		decoder(pressed);
+		while (gpio_get(BUTTON_PIN) == false) {
+			notpressed = notpressed + 1;
+			pressed = 0;
+			sleep_ms(50);
 		}
+		checkButton(notpressed);        
+		// check if the button press is a dot or a dash
+		// if (pressed == 2) {
+		// 	checkButton();
+		// }
 	}
 	
 }
 
-void decoder(){
-    // a function to be implemented
+void decoder(int pressed){
+    if (pressed > 0){
+		if (pressed < 5){
+			//dot or dash loop
+
+			printf("\nThis is a dot!");
+		} else {
+			printf("\nThis is a dash!");
+		}
+	}
+	// a function to be implemented
 }
 
 // void checkButton(int count){
@@ -71,19 +89,25 @@ void decoder(){
 //     // a function to be implemented
 // }
 
-void checkButton(){
-	clock_t start;
-	clock_t end;
-	if (pressed == 2){
-		start = clock();
-		printf("%f \n",(double)start);
+void checkButton(int notPressed){
+	if (notPressed > 8){
+		printf("This is an inter-letter gap!");
+	} else {
+		printf("This is a inter_signal gap!");
 	}
-	if (pressed == 1){
-		end = clock();
-		printf("%f \n",(double)end);
-	}
-	double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
-	printf("The time taken was %f \n",timeTaken);
+
+	// clock_t start;
+	// clock_t end;
+	// if (pressed == 2){
+	// 	start = clock();
+	// 	printf("%f \n",(double)start);
+	// }
+	// if (pressed == 1){
+	// 	end = clock();
+	// 	printf("%f \n",(double)end);
+	// }
+	// double timeTaken = (double)(end - start) / CLOCKS_PER_SEC;
+	// printf("The time taken was %f \n",timeTaken);
 }
 
 /*
