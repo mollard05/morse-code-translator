@@ -205,7 +205,7 @@ void angelasIfStatement() {
        printf("Array empty :((()))");
        //pass to subroutine to reset
   	}
-  	if (count == 1) {
+  	else if (count == 1) {
   	    if (letterArray[0] == 1) {
            seven_segment_show(4);
            // calls E
@@ -215,7 +215,7 @@ void angelasIfStatement() {
            // calls T
        }
    }
-   if (count == 2) {
+   else if (count == 2) {
 //       if (letterArray == [1,2]) {
        if (letterArray[0] == 1 && letterArray[1] == 2) {
            seven_segment_show(0);
@@ -234,8 +234,8 @@ void angelasIfStatement() {
            seven_segment_show(13);
            // calls N
        }
-   }
-   if (count == 3){
+    }
+    else if (count == 3){
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1) {
            seven_segment_show(3);
            // calls D
@@ -268,8 +268,8 @@ void angelasIfStatement() {
            seven_segment_show(22);
            // calls W
        }
-   }
-   if (count == 4){
+    }
+    else if (count == 4){
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 1) {
            seven_segment_show(1);
            // calls B
@@ -329,3 +329,5 @@ void angelasIfStatement() {
    sleep_ms(50);
    seven_segment_off();
 }
+//after a letter has been inputted can be paused for sleep_ms(500) - wont be adding another letter when a letter is being displayed 
+//the if statements should be else ifs, the final else is not a count of 4 
