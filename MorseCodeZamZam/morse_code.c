@@ -3,9 +3,10 @@
 #include <string.h>
 #include "pico/stdlib.h"
 #include "includes/seven_segment.h"
-#include <time.h>
+#include "hardware/pwm.h"
 
 #define BUTTON_PIN			15	// Pin 21 (GPIO 16)
+
 #define R 13
 #define G 12
 #define B 11
@@ -13,6 +14,7 @@
 #define BRIGHTNESS 25
 #define MAX_COLOUR_VALUE 255
 #define MAX_PWM_LEVEL 65535
+
 
 // declare global variables e.g., the time when the button is pressed 
 int pressed = 0;
@@ -35,6 +37,26 @@ void resetArray();
 void addToArray(int value);//1 is dot 2 is dash
 void angelasIfStatement();
 void outputEight();
+void setUpRGB();
+void showRGB(int r, int g);
+
+void setUpRGB() {
+    gpio_set_function(R, GPIO_FUNC_PWM);
+    gpio_set_function(G, GPIO_FUNC_PWM);
+    gpio_set_function(B, GPIO_FUNC_PWM);
+    //tell LED pins that PWM in charge of value
+
+    uint slice_num = pwm_gpio_to_slice_num(R);
+    pwm_config config = pwm_get_default_config();
+
+    pwm_init(slice_num, &config, true);
+
+    slice_num = pwm_gpio_to_slice_num(G);
+    pwm_init(slice_num, &config, true);
+
+    slice_num = pwm_gpio_to_slice_num(B);
+    pwm_init(slice_num, &config, true);
+}
 
 int main() {
 	timer_hw->dbgpause = 0;
@@ -51,10 +73,12 @@ int main() {
 	gpio_set_dir(BUTTON_PIN, GPIO_IN);
 	gpio_pull_down(BUTTON_PIN); // Pull the button pin towards ground (with an internal pull-down resistor).
 
+    setUpRGB();
+
+    //outputs 8 to 7 segment display
     outputEight();
-	// seven_segment_show(26);
-	// sleep_ms(500);
-	// seven_segment_off();
+
+    showRGB(0,255);
 
 	//display welcome message
 	printf("\nWelcome!\n");
@@ -151,6 +175,13 @@ void outputEight() {
     seven_segment_show(26);
 	sleep_ms(500);
 	seven_segment_off();
+}
+
+void showRGB(int r, int g) {
+    pwm_set_gpio_level(R, ~(MAX_PWM_LEVEL * r / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
+    pwm_set_gpio_level(G, ~(MAX_PWM_LEVEL * g / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
+    pwm_set_gpio_level(B, ~(MAX_PWM_LEVEL * 0 / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
+    printf("\nShowing rgb: %u %u %u",r, g, 0);
 }
 
 
@@ -302,6 +333,7 @@ void angelasIfStatement() {
    } else if (letterArray[0] == 0 && letterArray[1] == 0 && letterArray[2] == 0 && letterArray[3] == 0) {
 	    printf("\nNothing has been inputted right now!");
         isCorrect = true;
+        //if nothing is inputted
    } 
 
    if (isCorrect == false) {

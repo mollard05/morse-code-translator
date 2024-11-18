@@ -3,6 +3,10 @@
 
 // (Raspberry Pi Pico pinout: https://datasheets.raspberrypi.com/pico/Pico-R3-A4-Pinout.pdf)
 
+#include <stdio.h>
+#include <string.h>
+#include "pico/stdlib.h"
+
 #pragma once
 
 /** Top-center horizontal bar. */
