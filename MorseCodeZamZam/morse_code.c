@@ -78,7 +78,7 @@ int main() {
     //outputs 8 to 7 segment display
     outputEight();
 
-    showRGB(0,255);
+    showRGB(0,0);
 
 	//display welcome message
 	printf("\nWelcome!\n");
@@ -121,6 +121,7 @@ void decoder(int pressed){
 			addToArray(2);
 		} else {
             outputEight();
+            showRGB(255,0);
             printf("\nSignal not recognised - too long!");
             resetArray();
             //if button pressed for too long, outputs an error
@@ -189,6 +190,7 @@ void showRGB(int r, int g) {
 void angelasIfStatement() {
 	//Angela's if statements 
     bool isCorrect = false;
+    bool isEmpty = false;
 	int count = countElement();
 	printf("%d ",count);
   	
@@ -331,15 +333,19 @@ void angelasIfStatement() {
             // calls Z
        }
    } else if (letterArray[0] == 0 && letterArray[1] == 0 && letterArray[2] == 0 && letterArray[3] == 0) {
-	    printf("\nNothing has been inputted right now!");
-        isCorrect = true;
-        //if nothing is inputted
+	     printf("\nNothing has been inputted right now!");
+          isCorrect = true;
+          bool isEmpty = true;
+          //if nothing is inputted
    } 
 
-   if (isCorrect == false) {
+   if (isCorrect == false && isEmpty == false) {
        printf("\nError - invalid input");
        outputEight();
+       showRGB(255,0);
        // displays error
+   } else if (isCorrect == true && isEmpty == false) {
+     showRGB(0,255);
    }
 	   
    if (letterArray[0] != 0){
@@ -347,5 +353,6 @@ void angelasIfStatement() {
     //displays letter for longer if something has been inputted
    }
    sleep_ms(50);
+   showRGB(0,0);
    seven_segment_off();
 }
