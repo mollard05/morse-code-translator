@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cw1031.dir/buzzer.c.obj"
+  "CMakeFiles/cw1031.dir/buzzer.c.obj.d"
   "CMakeFiles/cw1031.dir/morse_code.c.obj"
   "CMakeFiles/cw1031.dir/morse_code.c.obj.d"
   "CMakeFiles/cw1031.dir/opt/pico-sdk/src/common/hardware_claim/claim.c.obj"

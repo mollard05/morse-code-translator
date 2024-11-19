@@ -4,8 +4,10 @@
 #include "pico/stdlib.h"
 #include "includes/seven_segment.h"
 #include "hardware/pwm.h"
+#include "includes/buzzer.h"
 
-#define BUTTON_PIN			15	// Pin 21 (GPIO 16)
+#define BUTTON_PIN			15	// Pin 21 (GPIO 15)
+#define BUZZER_PIN            17   // Pin 22 (GPIO 17)
 
 #define R 13
 #define G 12
@@ -22,6 +24,7 @@ int notPressed = 0;
 int notPressedCounter = 0;
 
 int letterArray[4]; //can be changed to 4 if Angela's if statement works with count
+char wordString[4];
 
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
@@ -31,14 +34,19 @@ void decoder(int pressed);
 // check if the button press is a dot or a dash
 void checkButton(int notPressed);
 
+void welcomeMessage();
 int countElements();
 void printArray();
-void resetArray();
+void resetArray(int decision);
 void addToArray(int value);//1 is dot 2 is dash
 void angelasIfStatement();
 void outputEight();
 void setUpRGB();
 void showRGB(int r, int g);
+//void buzzer_init();
+void playNote(unsigned int frequency, unsigned int length);
+int countElementWord();
+void addToWord(char value);
 
 void setUpRGB() {
     gpio_set_function(R, GPIO_FUNC_PWM);
@@ -61,6 +69,7 @@ void setUpRGB() {
 int main() {
 	timer_hw->dbgpause = 0;
 	stdio_init_all();
+     buzzer_init();
 
 	// Initialise the seven segment display.
 	seven_segment_init();
@@ -75,16 +84,12 @@ int main() {
 
     setUpRGB();
 
-    //outputs 8 to 7 segment display
-    outputEight();
+    //outputs welcome message and 8 to seven segment display
+    welcomeMessage();
+    resetArray(2);
 
-    showRGB(0,0);
-
-	//display welcome message
-	printf("\nWelcome!\n");
-	
 	while (true) {
-		printArray();
+		// printArray();
 		notPressedCounter = 0;
 		while (gpio_get(BUTTON_PIN) == false) { //loop continues until button is pressed again 
 			notPressed = notPressed + 1;
@@ -110,20 +115,30 @@ int main() {
 	
 }
 
+void welcomeMessage() {
+     showRGB(0,0);
+     //display welcome message
+	printf("\nWelcome!\n");
+     //display 8 to seven segment display
+     seven_segment_show(26);
+	sleep_ms(500);
+	seven_segment_off();
+}
+
 void decoder(int pressed){
     if (pressed > 0){
 		if (pressed < 5){
 			//dot or dash loop
-			printf("\nThis is a dot!");
+//			printf("\nThis is a dot!");
 			addToArray(1);
 		} else if (pressed < 14){
-			printf("\nThis is a dash!");
+//			printf("\nThis is a dash!");
 			addToArray(2);
 		} else {
             outputEight();
             showRGB(255,0);
-            printf("\nSignal not recognised - too long!");
-            resetArray();
+            printf("\nError! - signal pressed for too long!");
+            resetArray(1);
             //if button pressed for too long, outputs an error
         }
 	}
@@ -132,12 +147,13 @@ void decoder(int pressed){
 
 void checkButton(int notPressed){
 	if (notPressed > 8){
-		printf("\nThis is an inter-letter gap!");
+//		printf("\nThis is an inter-letter gap!");
 		angelasIfStatement();
-		resetArray();
+          // printArray();
+		// resetArray();
         //removes all values of array
 	} else {
-		printf("\nThis is a inter_signal gap!");
+//		printf("\nThis is a inter_signal gap!");
 	}
 
 }
@@ -151,19 +167,39 @@ int countElement() {
 	return count;
 }
 
+int countElementWord() {
+	//return the last free value
+	int count = 0;
+	while (wordString[count] != 0 && count < 4) {
+		count++;
+	}
+	return count;
+}
+
 void printArray() {
 	//print the array in form 0 0 0 0
-	printf("\n");
+	//printf("\n");
 	for (int i = 0; i < 4; i++) {
-		printf("%d ",letterArray[i]);
+          if (letterArray[i] == 1) {
+               playNote(255, 75);
+          } else if (letterArray[i] == 2) {
+               playNote(150, 200);
+          }
+		//printf("%d ",wordString[i]);
 	}
 }
 
-void resetArray() {
+void resetArray(int decision) {
 	//resets array to 0 0 0 0
-	for (int j = 0; j < 4; j++) {
-		letterArray[j] = 0;
-	}
+     if (decision == 1){
+     	for (int j = 0; j < 4; j++) {
+	     	letterArray[j] = 0;
+	     }
+     } else if (decision == 2){
+          for (int j = 0; j < 4; j++) {
+	     	wordString[j] = 0;
+	     }
+     }
 }
 
 void addToArray(int value) {
@@ -171,10 +207,17 @@ void addToArray(int value) {
 	//might need to add some validation incase its a 1 or a 2
 	letterArray[countElement()] = value;
 }
+void addToWord(char value) {
+	//adds parameter value into array
+	//might need to add some validation incase its a 1 or a 2
+	wordString[countElementWord()] = value;
+}
 
 void outputEight() {
-    seven_segment_show(26);
-	sleep_ms(500);
+     seven_segment_show(26);
+     showRGB(255,0);
+     playNote(31, 500);
+     playNote(150, 400);
 	seven_segment_off();
 }
 
@@ -182,28 +225,38 @@ void showRGB(int r, int g) {
     pwm_set_gpio_level(R, ~(MAX_PWM_LEVEL * r / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
     pwm_set_gpio_level(G, ~(MAX_PWM_LEVEL * g / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
     pwm_set_gpio_level(B, ~(MAX_PWM_LEVEL * 0 / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
-    printf("\nShowing rgb: %u %u %u",r, g, 0);
+ //   printf("\nShowing rgb: %u %u %u",r, g, 0);
 }
 
+void playNote(unsigned int frequency, unsigned int length) {
+	// Play the specified frequency for 1 second.
+     buzzer_init();
+	buzzer_enable(frequency);
+	sleep_ms(length);
+     buzzer_disable();
+     sleep_ms(50);
+}
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Angela's if statement++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void angelasIfStatement() {
 	//Angela's if statements 
-    bool isCorrect = false;
-    bool isEmpty = false;
+     bool isCorrect = false;
+     bool isEmpty = false;
 	int count = countElement();
-	printf("%d ",count);
+//	printf("%d ",count);
   	
-    if (count == 1) {
-        printf("\nzoe");
-        printf("\n%d",letterArray[0]);
+     if (count == 1) {
+//        printf("\nzoe");
+ //       printf("\n%d",letterArray[0]);
   	    if (letterArray[0] == 1) {
             isCorrect = true; 
             seven_segment_show(4);
+            addToWord('E');
             // calls E
   	    } else if (letterArray[0] == 2) {
             isCorrect = true;
             seven_segment_show(19);
+            addToWord('T');
             // calls T
        }
    }
@@ -211,21 +264,25 @@ void angelasIfStatement() {
        if (letterArray[0] == 1 && letterArray[1] == 2) {
             isCorrect = true;
             seven_segment_show(0);
+            addToWord('A');
             // calls A
        }
        if (letterArray[0] == 1 && letterArray[1] == 1) {
             isCorrect = true;
 		    seven_segment_show(8);
+              addToWord('I');
             // calls I
        }
        if (letterArray[0] == 2 && letterArray[1] == 2) {
             isCorrect = true;
             seven_segment_show(12);
+            addToWord('M');
             // calls M
        }
        if (letterArray[0] == 2 && letterArray[1] == 1) {
             isCorrect = true;
             seven_segment_show(13);
+            addToWord('N');
             // calls N
        }
     }
@@ -233,41 +290,49 @@ void angelasIfStatement() {
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(3);
+            addToWord('D');
             // calls D
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(6);
+            addToWord('G');
             // calls G
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(10);
+            addToWord('K');
             // calls K
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(14);
+            addToWord('O');
             // calls O
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(17);
+            addToWord('R');
             // calls R
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(18);
+            addToWord('S');
             // calls S
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(20);
+            addToWord('U');
             // calls U
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(22);
+            addToWord('W');
             // calls W
        }
     }
@@ -275,84 +340,115 @@ void angelasIfStatement() {
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(1);
+            addToWord('B');
             // calls B
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(2);
+            addToWord('C');
             // calls C
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(5);
+            addToWord('F');
             // calls F
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(7);
+            addToWord('H');
             // calls H
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(9);
+            addToWord('J');
             // calls J
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(11);
+            addToWord('L');
             // calls L
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(15);
+            addToWord('P');
             // calls P
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(16);
+            addToWord('Q');
             // calls Q
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(21);
+            addToWord('V');
             // calls V
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(23);
+            addToWord('X');
             // calls X
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(24);
+            addToWord('Y');
             // calls Y
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(25);
+            addToWord('Z');
             // calls Z
        }
    } else if (letterArray[0] == 0 && letterArray[1] == 0 && letterArray[2] == 0 && letterArray[3] == 0) {
-	     printf("\nNothing has been inputted right now!");
+//	     printf("\nNothing has been inputted right now!");
           isCorrect = true;
-          bool isEmpty = true;
+          isEmpty = true;
           //if nothing is inputted
-   } 
+     } 
 
-   if (isCorrect == false && isEmpty == false) {
-       printf("\nError - invalid input");
+     if (isCorrect == false && isEmpty == false) {
+       printf("\nError! - invalid input");
+       resetArray(2);
        outputEight();
        showRGB(255,0);
        // displays error
-   } else if (isCorrect == true && isEmpty == false) {
-     showRGB(0,255);
-   }
+     } else if (isCorrect == true && isEmpty == false) {
+       showRGB(0,255);
+       printArray();
+     }
 	   
-   if (letterArray[0] != 0){
-    sleep_ms(500); 
-    //displays letter for longer if something has been inputted
-   }
-   sleep_ms(50);
-   showRGB(0,0);
-   seven_segment_off();
+     if (letterArray[0] != 0){
+          sleep_ms(500); 
+          //displays letter for longer if something has been inputted
+     }
+
+     // printArray();
+     resetArray(1);
+
+     if (wordString[3] != 0) {
+          for (int i = 0; i < 4; i++) {
+               printf("%c", wordString[i]);
+               // printf("%d", i);
+          }
+          resetArray(2);
+          printf("\n");
+          for (int i = 0; i < 5; i++){     
+               playNote(500,100);
+               playNote(400,100);
+          }
+     }
+     
+     sleep_ms(50);
+     showRGB(0,0);
+     seven_segment_off();
 }

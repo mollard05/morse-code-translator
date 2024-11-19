@@ -194,6 +194,30 @@ cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast:
 	$(MAKE) $(MAKESILENT) -f pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build.make pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 .PHONY : cyw43_driver_picow_cyw43_bus_pio_spi_pio_h/fast
 
+buzzer.obj: buzzer.c.obj
+.PHONY : buzzer.obj
+
+# target to build an object file
+buzzer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/buzzer.c.obj
+.PHONY : buzzer.c.obj
+
+buzzer.i: buzzer.c.i
+.PHONY : buzzer.i
+
+# target to preprocess a source file
+buzzer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/buzzer.c.i
+.PHONY : buzzer.c.i
+
+buzzer.s: buzzer.c.s
+.PHONY : buzzer.s
+
+# target to generate assembly for a file
+buzzer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/buzzer.c.s
+.PHONY : buzzer.c.s
+
 morse_code.obj: morse_code.c.obj
 .PHONY : morse_code.obj
 
@@ -1400,6 +1424,9 @@ help:
 	@echo "... pioasmBuild"
 	@echo "... bs2_default"
 	@echo "... cw1031"
+	@echo "... buzzer.obj"
+	@echo "... buzzer.i"
+	@echo "... buzzer.s"
 	@echo "... morse_code.obj"
 	@echo "... morse_code.i"
 	@echo "... morse_code.s"

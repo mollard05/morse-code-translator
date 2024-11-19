@@ -132,6 +132,7 @@ set(CMAKE_ASM_TARGET_INCLUDE_PATH
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/buzzer.c" "CMakeFiles/cw1031.dir/buzzer.c.obj" "gcc" "CMakeFiles/cw1031.dir/buzzer.c.obj.d"
   "/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/morse_code.c" "CMakeFiles/cw1031.dir/morse_code.c.obj" "gcc" "CMakeFiles/cw1031.dir/morse_code.c.obj.d"
   "/opt/pico-sdk/src/common/hardware_claim/claim.c" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/common/hardware_claim/claim.c.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/common/hardware_claim/claim.c.obj.d"
   "/opt/pico-sdk/src/common/pico_sync/critical_section.c" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/common/pico_sync/critical_section.c.obj.d"
