@@ -26,6 +26,7 @@ int notPressed = 0;
 int notPressedCounter = 0;
 
 int maxTime = 4;
+int totalTime = 0;
 
 int letterArray[4]; //can be changed to 4 if Angela's if statement works with count
 char wordString[4];
@@ -103,6 +104,7 @@ int main() {
 	while (true) {
 		// printArray();
 		notPressedCounter = 0;
+
 		while (gpio_get(BUTTON_PIN) == false) { //loop continues until button is pressed again 
 			notPressed = notPressed + 1;
 			pressed = 0;
@@ -111,6 +113,7 @@ int main() {
 				//set array to be 0 so the if statements work
 				break;
 			}
+               totalTime += 1;
 			sleep_ms(50);
 		}
 
@@ -119,10 +122,17 @@ int main() {
 		while (gpio_get(BUTTON_PIN)) {
 			pressed = pressed + 1;
 			notPressed = 0;
+               totalTime += 1;
 			sleep_ms(50);
 		}
 
 		decoder(pressed);
+
+          if (totalTime >= maxTime * 20){
+               printf("Error! - too long to input letter");
+               outputEight();
+               //what happens when exeedes the max time?
+          }
 	}
 	
 }
@@ -164,6 +174,7 @@ void decoder(int pressed){
 
 void checkButton(int notPressed){
 	if (notPressed > 8){
+          int totalTime = 0;
 //		printf("\nThis is an inter-letter gap!");
 		angelasIfStatement();
           // printArray();
