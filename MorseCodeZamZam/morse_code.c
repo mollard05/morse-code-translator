@@ -5,9 +5,9 @@
 #include "includes/seven_segment.h"
 #include "hardware/pwm.h"
 #include "includes/buzzer.h"
+//#include "includes/poteniometer.h"
 
 #define BUTTON_PIN			15	// Pin 21 (GPIO 15)
-#define BUTTON_PIN2           14   // check this is correct
 #define BUZZER_PIN            17   // Pin 22 (GPIO 17)
 
 #define R 13
@@ -48,8 +48,7 @@ void showRGB(int r, int g);
 void playNote(unsigned int frequency, unsigned int length);
 int countElementWord();
 void addToWord(char value);
-
-void exit1();
+//void setPotentiometer();
 
 void setUpRGB() {
     gpio_set_function(R, GPIO_FUNC_PWM);
@@ -73,6 +72,7 @@ int main() {
 	timer_hw->dbgpause = 0;
 	stdio_init_all();
      buzzer_init();
+    // potentiometer_init();
 
 	// Initialise the seven segment display.
 	seven_segment_init();
@@ -85,17 +85,13 @@ int main() {
 	gpio_set_dir(BUTTON_PIN, GPIO_IN);
 	gpio_pull_down(BUTTON_PIN); // Pull the button pin towards ground (with an internal pull-down resistor).
 
-     //same as BUTTON_PIN for 2
-     //might need to be in the exit subroutine - only used for that SR?
-     gpio_init(BUTTON_PIN);
-	gpio_set_dir(BUTTON_PIN, GPIO_IN);
-	gpio_pull_down(BUTTON_PIN2);
+    setUpRGB();
 
-      setUpRGB();
+    //outputs welcome message and 8 to seven segment display
+    welcomeMessage();
+    resetArray(2);
 
-      //outputs welcome message and 8 to seven segment display
-      welcomeMessage();
-     resetArray(2);
+    //setPotentiometer();
 
 	while (true) {
 		// printArray();
@@ -134,8 +130,13 @@ void welcomeMessage() {
 	seven_segment_off();
 }
 
+// void setPotentiometer() {
+//      int value = potentiometer_read(3);
+//      printf("Potentiometer set to %d", value);
+// }
+
 void decoder(int pressed){
-     if (pressed > 0){
+    if (pressed > 0){
 		if (pressed < 5){
 			//dot or dash loop
 //			printf("\nThis is a dot!");
@@ -244,23 +245,6 @@ void playNote(unsigned int frequency, unsigned int length) {
 	sleep_ms(length);
      buzzer_disable();
      sleep_ms(50);
-}
-
-void exit1(){
-     bool left = gpio_get(BUTTON_PIN);
-     bool right = gpio_get(BUTTON_PIN2);
-     printf("exit or continue?");
-     while (left == false && right == false){
-     }
-     if (left == true){
-          //continue with program
-          showRGB(0,255);
-     } else if (right == true){
-          //end program
-          showRGB(255,0);
-     }
-     sleep_ms(50);
-     showRGB(0,0);
 }
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Angela's if statement++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -472,7 +456,6 @@ void angelasIfStatement() {
                playNote(500,100);
                playNote(400,100);
           }
-          exit1(); // no clue why it hates me
      }
      
      sleep_ms(50);
