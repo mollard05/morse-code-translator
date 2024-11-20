@@ -7,7 +7,8 @@
 #include "includes/buzzer.h"
 //#include "includes/poteniometer.h"
 
-#define BUTTON_PIN			15	// Pin 21 (GPIO 15)
+#define BUTTON_PIN  		15	// Pin 21 (GPIO 15)
+#define BUTTON_PIN_TWO        14           
 #define BUZZER_PIN            17   // Pin 22 (GPIO 17)
 
 #define R 13
@@ -82,8 +83,12 @@ int main() {
 
 	// Initialise the button's GPIO pin.
 	gpio_init(BUTTON_PIN);
+     gpio_init(BUTTON_PIN_TWO);
 	gpio_set_dir(BUTTON_PIN, GPIO_IN);
 	gpio_pull_down(BUTTON_PIN); // Pull the button pin towards ground (with an internal pull-down resistor).
+     gpio_set_dir(BUTTON_PIN_TWO, GPIO_IN);
+	gpio_pull_down(BUTTON_PIN_TWO); // Pull the button pin towards ground (with an internal pull-down resistor).
+
 
     setUpRGB();
 
@@ -455,6 +460,25 @@ void angelasIfStatement() {
           for (int i = 0; i < 5; i++){     
                playNote(500,100);
                playNote(400,100);
+          }
+          printf("To continue, press left button\n");
+          printf("To exit, press the right button >> \n");
+          bool p = false;
+          while (p == false) {
+               showRGB(0,0);
+               seven_segment_off();
+               if (gpio_get(BUTTON_PIN)) {
+                    p = true;
+                    showRGB(0, 255);
+                    sleep_ms(300);
+                    showRGB(0,0);
+               } else if (gpio_get(BUTTON_PIN_TWO)){
+                    p = true;
+                    showRGB(255,0);
+                    sleep_ms(300);
+                    showRGB(0,0);
+                    exit(1);
+               }
           }
      }
      
