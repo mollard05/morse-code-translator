@@ -39,16 +39,16 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/build/pico-sdk/tools/cmake_install.cmake")
+  include("/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/tools/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/build/pico-sdk/src/cmake_install.cmake")
+  include("/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/build/pico-sdk/docs/cmake_install.cmake")
+  include("/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/docs/cmake_install.cmake")
 endif()
 

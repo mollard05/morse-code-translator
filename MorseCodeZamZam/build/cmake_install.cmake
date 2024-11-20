@@ -1,4 +1,4 @@
-# Install script for directory: /user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam
+# Install script for directory: /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/build/pico-sdk/cmake_install.cmake")
+  include("/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/cmake_install.cmake")
 
 endif()
 
@@ -51,5 +51,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/user/HS400/ms04317/Documents/COM1031/coursework/zam/MorseCodeZamZam/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
