@@ -104,6 +104,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj.d"
   "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj"
   "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
+  "CMakeFiles/cw1031.dir/potentiometer.c.obj"
+  "CMakeFiles/cw1031.dir/potentiometer.c.obj.d"
   "cw1031.elf"
   "cw1031.pdb"
 )

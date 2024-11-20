@@ -7,7 +7,7 @@
 #include "includes/buzzer.h"
 //#include "includes/poteniometer.h"
 
-#define BUTTON_PIN  		15	// Pin 21 (GPIO 15)
+#define BUTTON_PIN  		16	// Pin 21 (GPIO 15)
 #define BUTTON_PIN_TWO        14           
 #define BUZZER_PIN            17   // Pin 22 (GPIO 17)
 
@@ -27,6 +27,9 @@ int notPressedCounter = 0;
 
 int maxTime = 4;
 int totalTime = 0;
+
+unsigned int potValue = 0;
+unsigned int potValue1 = 0;
 
 int letterArray[4]; //can be changed to 4 if Angela's if statement works with count
 char wordString[4];
@@ -53,6 +56,8 @@ void playNote(unsigned int frequency, unsigned int length);
 int countElementWord();
 void addToWord(char value);
 //void setPotentiometer();
+
+void potential();
 
 void setUpRGB() {
     gpio_set_function(R, GPIO_FUNC_PWM);
@@ -81,6 +86,9 @@ int main() {
 	// Initialise the seven segment display.
 	seven_segment_init();
 
+     // Initialise the potentiometer.
+     potentiometer_init();
+
 	// Turn the seven segment display off when the program starts.
 	seven_segment_off();
 
@@ -98,11 +106,13 @@ int main() {
     //outputs welcome message and 8 to seven segment display
     welcomeMessage();
     resetArray(2);
+    potential();
 
     //setPotentiometer();
 
 	while (true) {
 		// printArray();
+
 		notPressedCounter = 0;
 
 		while (gpio_get(BUTTON_PIN) == false) { //loop continues until button is pressed again 
@@ -129,8 +139,11 @@ int main() {
 		decoder(pressed);
 
           if (totalTime >= maxTime * 20){
-               printf("Error! - too long to input letter");
+               printf("Error! - too long to input letter\n");
                outputEight();
+               totalTime = 0;
+               resetArray(2);
+
                //what happens when exeedes the max time?
           }
 	}
@@ -174,7 +187,7 @@ void decoder(int pressed){
 
 void checkButton(int notPressed){
 	if (notPressed > 8){
-          int totalTime = 0;
+          totalTime = 0;
 //		printf("\nThis is an inter-letter gap!");
 		angelasIfStatement();
           // printArray();
@@ -265,6 +278,25 @@ void playNote(unsigned int frequency, unsigned int length) {
      sleep_ms(50);
 }
 
+void potential(){
+     potValue1 = potValue;
+     printf("\nPick a value for the number of seconds to input each letter");
+     printf("\npress right button to confirm time");
+     
+     // Read the potentiometer (numers between 2-4).
+     while (gpio_get(BUTTON_PIN_TWO) == false) {
+          potValue1 = potValue;
+          potValue = potentiometer_read(2) + 2;
+          if (potValue != potValue1){
+		     	printf("\nnumber of seconds: %d\n", potValue);
+	     }
+          sleep_ms(50);
+     }
+     printf("you may now input morse code!");
+     maxTime = potValue;
+
+}
+
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++Angela's if statement++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 void angelasIfStatement() {
 	//Angela's if statements 
@@ -280,11 +312,13 @@ void angelasIfStatement() {
             isCorrect = true; 
             seven_segment_show(4);
             addToWord('E');
+            printf("\nE");
             // calls E
   	    } else if (letterArray[0] == 2) {
             isCorrect = true;
             seven_segment_show(19);
             addToWord('T');
+            printf("\nT");
             // calls T
        }
    }
@@ -293,24 +327,28 @@ void angelasIfStatement() {
             isCorrect = true;
             seven_segment_show(0);
             addToWord('A');
+            printf("\nA");
             // calls A
        }
        if (letterArray[0] == 1 && letterArray[1] == 1) {
-            isCorrect = true;
-		    seven_segment_show(8);
-              addToWord('I');
-            // calls I
+          isCorrect = true;
+		seven_segment_show(8);
+          addToWord('I');
+          printf("\nI");
+          // calls I
        }
        if (letterArray[0] == 2 && letterArray[1] == 2) {
             isCorrect = true;
             seven_segment_show(12);
             addToWord('M');
+            printf("\nM");
             // calls M
        }
        if (letterArray[0] == 2 && letterArray[1] == 1) {
             isCorrect = true;
             seven_segment_show(13);
             addToWord('N');
+            printf("\nN");
             // calls N
        }
     }
@@ -319,48 +357,56 @@ void angelasIfStatement() {
             isCorrect = true;
             seven_segment_show(3);
             addToWord('D');
+            printf("\nD");
             // calls D
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(6);
             addToWord('G');
+            printf("\nG");
             // calls G
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(10);
             addToWord('K');
+            printf("\nK");
             // calls K
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(14);
             addToWord('O');
+            printf("\nO");
             // calls O
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(17);
             addToWord('R');
+            printf("\nR");
             // calls R
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1) {
             isCorrect = true;
             seven_segment_show(18);
             addToWord('S');
+            printf("\nS");
             // calls S
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(20);
             addToWord('U');
+            printf("\nU");
             // calls U
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2) {
             isCorrect = true;
             seven_segment_show(22);
             addToWord('W');
+            printf("\nW");
             // calls W
        }
     }
@@ -369,72 +415,84 @@ void angelasIfStatement() {
             isCorrect = true;
             seven_segment_show(1);
             addToWord('B');
+            printf("\nB");
             // calls B
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(2);
             addToWord('C');
+            printf("\nC");
             // calls C
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(5);
             addToWord('F');
+            printf("\nF");
             // calls F
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(7);
             addToWord('H');
+            printf("\nH");
             // calls H
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(9);
             addToWord('J');
+            printf("\nJ");
             // calls J
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(11);
             addToWord('L');
+            printf("\nL");
             // calls L
        }
        if (letterArray[0] == 1 && letterArray[1] == 2 && letterArray[2] == 2 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(15);
             addToWord('P');
+            printf("\nP");
             // calls P
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(16);
             addToWord('Q');
+            printf("\nQ");
             // calls Q
        }
        if (letterArray[0] == 1 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(21);
             addToWord('V');
+            printf("\nV");
             // calls V
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 1 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(23);
             addToWord('X');
+            printf("\nX");
             // calls X
        }
        if (letterArray[0] == 2 && letterArray[1] == 1 && letterArray[2] == 2 && letterArray[3] == 2) {
             isCorrect = true;
             seven_segment_show(24);
             addToWord('Y');
+            printf("\nY");
             // calls Y
        }
        if (letterArray[0] == 2 && letterArray[1] == 2 && letterArray[2] == 1 && letterArray[3] == 1) {
             isCorrect = true;
             seven_segment_show(25);
             addToWord('Z');
+            printf("\nZ");
             // calls Z
        }
    } else if (letterArray[0] == 0 && letterArray[1] == 0 && letterArray[2] == 0 && letterArray[3] == 0) {
@@ -446,7 +504,7 @@ void angelasIfStatement() {
 
      if (isCorrect == false && isEmpty == false) {
        printf("\nError! - invalid input");
-       resetArray(2);
+       //resetArray(2);
        outputEight();
        showRGB(255,0);
        // displays error
@@ -464,6 +522,7 @@ void angelasIfStatement() {
      resetArray(1);
 
      if (wordString[3] != 0) {
+          printf("\n");
           for (int i = 0; i < 4; i++) {
                printf("%c", wordString[i]);
                // printf("%d", i);
@@ -485,6 +544,7 @@ void angelasIfStatement() {
                     showRGB(0, 255);
                     sleep_ms(300);
                     showRGB(0,0);
+                    totalTime = 0;
                } else if (gpio_get(BUTTON_PIN_TWO)){
                     p = true;
                     showRGB(255,0);
@@ -499,3 +559,8 @@ void angelasIfStatement() {
      showRGB(0,0);
      seven_segment_off();
 }
+
+//set code to change with potentiometer
+// no input array is very sensitive and will show error in middle of word - reset to be after each bottom is pressed??
+
+//gives negative feedback buzz if the user fails to input within the allotted time;

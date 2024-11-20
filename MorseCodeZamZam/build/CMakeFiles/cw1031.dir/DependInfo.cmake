@@ -178,6 +178,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj.d"
   "/opt/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj.d"
   "/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj.d"
+  "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/potentiometer.c" "CMakeFiles/cw1031.dir/potentiometer.c.obj" "gcc" "CMakeFiles/cw1031.dir/potentiometer.c.obj.d"
   "/opt/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj" "gcc" "CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_cxx_options/new_delete.cpp.obj.d"
   )
 

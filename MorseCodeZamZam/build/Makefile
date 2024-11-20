@@ -1410,6 +1410,30 @@ opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
+potentiometer.obj: potentiometer.c.obj
+.PHONY : potentiometer.obj
+
+# target to build an object file
+potentiometer.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/potentiometer.c.obj
+.PHONY : potentiometer.c.obj
+
+potentiometer.i: potentiometer.c.i
+.PHONY : potentiometer.i
+
+# target to preprocess a source file
+potentiometer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/potentiometer.c.i
+.PHONY : potentiometer.c.i
+
+potentiometer.s: potentiometer.c.s
+.PHONY : potentiometer.s
+
+# target to generate assembly for a file
+potentiometer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cw1031.dir/build.make CMakeFiles/cw1031.dir/potentiometer.c.s
+.PHONY : potentiometer.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -1576,6 +1600,9 @@ help:
 	@echo "... opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj"
 	@echo "... opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i"
 	@echo "... opt/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s"
+	@echo "... potentiometer.obj"
+	@echo "... potentiometer.i"
+	@echo "... potentiometer.s"
 .PHONY : help
 
 
