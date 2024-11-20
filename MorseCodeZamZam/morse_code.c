@@ -25,6 +25,8 @@ int pressed = 0;
 int notPressed = 0;
 int notPressedCounter = 0;
 
+int maxTime = 4;
+
 int letterArray[4]; //can be changed to 4 if Angela's if statement works with count
 char wordString[4];
 
@@ -461,7 +463,7 @@ void angelasIfStatement() {
                playNote(500,100);
                playNote(400,100);
           }
-          printf("To continue, press left button\n");
+          printf("To continue, press the left button << \n");
           printf("To exit, press the right button >> \n");
           bool p = false;
           while (p == false) {
