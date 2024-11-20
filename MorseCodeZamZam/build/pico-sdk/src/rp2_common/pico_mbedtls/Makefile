@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam
+CMAKE_SOURCE_DIR = /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build
+CMAKE_BINARY_DIR = /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(CMAKE_COMMAND) -E cmake_progress_start /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/CMakeFiles /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_mbedtls//CMakeFiles/progress.marks
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/CMakeFiles 0
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(CMAKE_COMMAND) -E cmake_progress_start /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/CMakeFiles /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_mbedtls//CMakeFiles/progress.marks
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/clean
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,17 +103,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/preinstall
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/preinstall
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pico-sdk/src/rp2_common/pico_mbedtls/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -135,6 +135,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

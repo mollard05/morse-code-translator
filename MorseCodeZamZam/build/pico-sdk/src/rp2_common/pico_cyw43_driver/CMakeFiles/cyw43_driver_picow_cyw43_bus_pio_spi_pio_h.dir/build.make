@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam
+CMAKE_SOURCE_DIR = /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build
+CMAKE_BINARY_DIR = /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build
 
 # Utility rule file for cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.
 
@@ -69,8 +69,8 @@ include pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_
 pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h
 
 pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h: /opt/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating cyw43_bus_pio_spi.pio.h"
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver && ../../../../pioasm-install/pioasm/pioasm -o c-sdk -v 0 /opt/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating cyw43_bus_pio_spi.pio.h"
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver && ../../../../pioasm-install/pioasm/pioasm -o c-sdk -v 0 /opt/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h
 
 cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h
 cyw43_driver_picow_cyw43_bus_pio_spi_pio_h: pico-sdk/src/rp2_common/pico_cyw43_driver/cyw43_bus_pio_spi.pio.h
@@ -82,10 +82,10 @@ pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bu
 .PHONY : pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/build
 
 pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/clean:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver && $(CMAKE_COMMAND) -P CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/cmake_clean.cmake
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver && $(CMAKE_COMMAND) -P CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/cmake_clean.cmake
 .PHONY : pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/clean
 
 pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/depend:
-	cd /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam /opt/pico-sdk/src/rp2_common/pico_cyw43_driver /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/DependInfo.cmake --color=$(COLOR)
+	cd /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam /opt/pico-sdk/src/rp2_common/pico_cyw43_driver /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/cyw43_driver_picow_cyw43_bus_pio_spi_pio_h.dir/depend
 

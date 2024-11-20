@@ -195,7 +195,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -295,11 +295,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "arm-none-eabi-g++"
+			"type" : "STRING",
+			"value" : "/usr/bin/arm-none-eabi-g++"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -423,11 +423,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "arm-none-eabi-gcc"
+			"type" : "STRING",
+			"value" : "/usr/bin/arm-none-eabi-gcc"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -731,7 +731,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1311,7 +1311,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/_deps"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/_deps"
 		},
 		{
 			"name" : "FETCHCONTENT_FULLY_DISCONNECTED",
@@ -1575,7 +1575,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/opt/pico-sdk/src/common/boot_picobin_headers;/opt/pico-sdk/src/common/boot_picoboot_headers;/opt/pico-sdk/src/common/boot_uf2_headers;/opt/pico-sdk/src/common/pico_base_headers;/opt/pico-sdk/src/common/pico_usb_reset_interface_headers;/opt/pico-sdk/src/common/pico_bit_ops_headers;/opt/pico-sdk/src/common/pico_binary_info;/opt/pico-sdk/src/common/pico_divider_headers;/opt/pico-sdk/src/common/pico_sync;/opt/pico-sdk/src/common/pico_time;/opt/pico-sdk/src/common/pico_util;/opt/pico-sdk/src/common/pico_stdlib_headers;/opt/pico-sdk/src/common/hardware_claim;/opt/pico-sdk/src/rp2040/pico_platform;/opt/pico-sdk/src/rp2040/hardware_regs;/opt/pico-sdk/src/rp2040/hardware_structs;/opt/pico-sdk/src/rp2040/boot_stage2;/opt/pico-sdk/src/rp2_common/hardware_base;/opt/pico-sdk/src/rp2_common/hardware_adc;/opt/pico-sdk/src/rp2_common/hardware_boot_lock;/opt/pico-sdk/src/rp2_common/hardware_clocks;/opt/pico-sdk/src/rp2_common/hardware_divider;/opt/pico-sdk/src/rp2_common/hardware_dma;/opt/pico-sdk/src/rp2_common/hardware_exception;/opt/pico-sdk/src/rp2_common/hardware_flash;/opt/pico-sdk/src/rp2_common/hardware_gpio;/opt/pico-sdk/src/rp2_common/hardware_i2c;/opt/pico-sdk/src/rp2_common/hardware_interp;/opt/pico-sdk/src/rp2_common/hardware_irq;/opt/pico-sdk/src/rp2_common/hardware_pio;/opt/pico-sdk/src/rp2_common/hardware_pll;/opt/pico-sdk/src/rp2_common/hardware_pwm;/opt/pico-sdk/src/rp2_common/hardware_resets;/opt/pico-sdk/src/rp2_common/hardware_rtc;/opt/pico-sdk/src/rp2_common/hardware_spi;/opt/pico-sdk/src/rp2_common/hardware_sync;/opt/pico-sdk/src/rp2_common/hardware_sync_spin_lock;/opt/pico-sdk/src/rp2_common/hardware_ticks;/opt/pico-sdk/src/rp2_common/hardware_timer;/opt/pico-sdk/src/rp2_common/hardware_uart;/opt/pico-sdk/src/rp2_common/hardware_vreg;/opt/pico-sdk/src/rp2_common/hardware_watchdog;/opt/pico-sdk/src/rp2_common/hardware_xosc;/opt/pico-sdk/src/rp2_common/pico_bootrom;/opt/pico-sdk/src/rp2_common/pico_platform_compiler;/opt/pico-sdk/src/rp2_common/pico_platform_sections;/opt/pico-sdk/src/rp2_common/pico_platform_panic;/opt/pico-sdk/src/rp2_common/pico_aon_timer;/opt/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset;/opt/pico-sdk/src/rp2_common/pico_multicore;/opt/pico-sdk/src/rp2_common/pico_unique_id;/opt/pico-sdk/src/rp2_common/pico_atomic;/opt/pico-sdk/src/rp2_common/pico_bit_ops;/opt/pico-sdk/src/rp2_common/pico_divider;/opt/pico-sdk/src/rp2_common/pico_double;/opt/pico-sdk/src/rp2_common/pico_int64_ops;/opt/pico-sdk/src/rp2_common/pico_flash;/opt/pico-sdk/src/rp2_common/pico_float;/opt/pico-sdk/src/rp2_common/pico_mem_ops;/opt/pico-sdk/src/rp2_common/pico_malloc;/opt/pico-sdk/src/rp2_common/pico_printf;/opt/pico-sdk/src/rp2_common/pico_rand;/opt/pico-sdk/src/rp2_common/pico_stdio_semihosting;/opt/pico-sdk/src/rp2_common/pico_stdio_uart;/opt/pico-sdk/src/rp2_common/pico_stdio_rtt;/opt/pico-sdk/src/rp2_common/cmsis;/opt/pico-sdk/src/rp2_common/tinyusb;/opt/pico-sdk/src/rp2_common/pico_stdio_usb;/opt/pico-sdk/src/rp2_common/pico_i2c_slave;/opt/pico-sdk/src/rp2_common/pico_async_context;/opt/pico-sdk/src/rp2_common/pico_btstack;/opt/pico-sdk/src/rp2_common/pico_cyw43_driver;/opt/pico-sdk/src/rp2_common/pico_lwip/tools;/opt/pico-sdk/src/rp2_common/pico_lwip;/opt/pico-sdk/lib/cyw43-driver/src;/opt/pico-sdk/src/rp2_common/pico_cyw43_arch;/opt/pico-sdk/src/rp2_common/pico_mbedtls;/opt/pico-sdk/src/rp2_common/pico_time_adapter;/opt/pico-sdk/src/rp2_common/pico_crt0;/opt/pico-sdk/src/rp2_common/pico_clib_interface;/opt/pico-sdk/src/rp2_common/pico_cxx_options;/opt/pico-sdk/src/rp2_common/pico_standard_binary_info;/opt/pico-sdk/src/rp2_common/pico_standard_link;/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration;/opt/pico-sdk/src/rp2_common/pico_fix;/opt/pico-sdk/src/rp2_common/pico_runtime_init;/opt/pico-sdk/src/rp2_common/pico_runtime;/opt/pico-sdk/src/rp2_common/pico_stdio;/opt/pico-sdk/src/rp2_common/pico_stdlib;/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk/src/extra_doxygen"
+			"value" : "/opt/pico-sdk/src/common/boot_picobin_headers;/opt/pico-sdk/src/common/boot_picoboot_headers;/opt/pico-sdk/src/common/boot_uf2_headers;/opt/pico-sdk/src/common/pico_base_headers;/opt/pico-sdk/src/common/pico_usb_reset_interface_headers;/opt/pico-sdk/src/common/pico_bit_ops_headers;/opt/pico-sdk/src/common/pico_binary_info;/opt/pico-sdk/src/common/pico_divider_headers;/opt/pico-sdk/src/common/pico_sync;/opt/pico-sdk/src/common/pico_time;/opt/pico-sdk/src/common/pico_util;/opt/pico-sdk/src/common/pico_stdlib_headers;/opt/pico-sdk/src/common/hardware_claim;/opt/pico-sdk/src/rp2040/pico_platform;/opt/pico-sdk/src/rp2040/hardware_regs;/opt/pico-sdk/src/rp2040/hardware_structs;/opt/pico-sdk/src/rp2040/boot_stage2;/opt/pico-sdk/src/rp2_common/hardware_base;/opt/pico-sdk/src/rp2_common/hardware_adc;/opt/pico-sdk/src/rp2_common/hardware_boot_lock;/opt/pico-sdk/src/rp2_common/hardware_clocks;/opt/pico-sdk/src/rp2_common/hardware_divider;/opt/pico-sdk/src/rp2_common/hardware_dma;/opt/pico-sdk/src/rp2_common/hardware_exception;/opt/pico-sdk/src/rp2_common/hardware_flash;/opt/pico-sdk/src/rp2_common/hardware_gpio;/opt/pico-sdk/src/rp2_common/hardware_i2c;/opt/pico-sdk/src/rp2_common/hardware_interp;/opt/pico-sdk/src/rp2_common/hardware_irq;/opt/pico-sdk/src/rp2_common/hardware_pio;/opt/pico-sdk/src/rp2_common/hardware_pll;/opt/pico-sdk/src/rp2_common/hardware_pwm;/opt/pico-sdk/src/rp2_common/hardware_resets;/opt/pico-sdk/src/rp2_common/hardware_rtc;/opt/pico-sdk/src/rp2_common/hardware_spi;/opt/pico-sdk/src/rp2_common/hardware_sync;/opt/pico-sdk/src/rp2_common/hardware_sync_spin_lock;/opt/pico-sdk/src/rp2_common/hardware_ticks;/opt/pico-sdk/src/rp2_common/hardware_timer;/opt/pico-sdk/src/rp2_common/hardware_uart;/opt/pico-sdk/src/rp2_common/hardware_vreg;/opt/pico-sdk/src/rp2_common/hardware_watchdog;/opt/pico-sdk/src/rp2_common/hardware_xosc;/opt/pico-sdk/src/rp2_common/pico_bootrom;/opt/pico-sdk/src/rp2_common/pico_platform_compiler;/opt/pico-sdk/src/rp2_common/pico_platform_sections;/opt/pico-sdk/src/rp2_common/pico_platform_panic;/opt/pico-sdk/src/rp2_common/pico_aon_timer;/opt/pico-sdk/src/rp2_common/pico_bootsel_via_double_reset;/opt/pico-sdk/src/rp2_common/pico_multicore;/opt/pico-sdk/src/rp2_common/pico_unique_id;/opt/pico-sdk/src/rp2_common/pico_atomic;/opt/pico-sdk/src/rp2_common/pico_bit_ops;/opt/pico-sdk/src/rp2_common/pico_divider;/opt/pico-sdk/src/rp2_common/pico_double;/opt/pico-sdk/src/rp2_common/pico_int64_ops;/opt/pico-sdk/src/rp2_common/pico_flash;/opt/pico-sdk/src/rp2_common/pico_float;/opt/pico-sdk/src/rp2_common/pico_mem_ops;/opt/pico-sdk/src/rp2_common/pico_malloc;/opt/pico-sdk/src/rp2_common/pico_printf;/opt/pico-sdk/src/rp2_common/pico_rand;/opt/pico-sdk/src/rp2_common/pico_stdio_semihosting;/opt/pico-sdk/src/rp2_common/pico_stdio_uart;/opt/pico-sdk/src/rp2_common/pico_stdio_rtt;/opt/pico-sdk/src/rp2_common/cmsis;/opt/pico-sdk/src/rp2_common/tinyusb;/opt/pico-sdk/src/rp2_common/pico_stdio_usb;/opt/pico-sdk/src/rp2_common/pico_i2c_slave;/opt/pico-sdk/src/rp2_common/pico_async_context;/opt/pico-sdk/src/rp2_common/pico_btstack;/opt/pico-sdk/src/rp2_common/pico_cyw43_driver;/opt/pico-sdk/src/rp2_common/pico_lwip/tools;/opt/pico-sdk/src/rp2_common/pico_lwip;/opt/pico-sdk/lib/cyw43-driver/src;/opt/pico-sdk/src/rp2_common/pico_cyw43_arch;/opt/pico-sdk/src/rp2_common/pico_mbedtls;/opt/pico-sdk/src/rp2_common/pico_time_adapter;/opt/pico-sdk/src/rp2_common/pico_crt0;/opt/pico-sdk/src/rp2_common/pico_clib_interface;/opt/pico-sdk/src/rp2_common/pico_cxx_options;/opt/pico-sdk/src/rp2_common/pico_standard_binary_info;/opt/pico-sdk/src/rp2_common/pico_standard_link;/opt/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration;/opt/pico-sdk/src/rp2_common/pico_fix;/opt/pico-sdk/src/rp2_common/pico_runtime_init;/opt/pico-sdk/src/rp2_common/pico_runtime;/opt/pico-sdk/src/rp2_common/pico_stdio;/opt/pico-sdk/src/rp2_common/pico_stdlib;/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk/src/extra_doxygen"
 		},
 		{
 			"name" : "PICO_DOXYGEN_PRE_DEFINES",
@@ -1875,7 +1875,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pioasm-install"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pioasm-install"
 		},
 		{
 			"name" : "_Python3_EXECUTABLE",
@@ -1923,7 +1923,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build"
 		},
 		{
 			"name" : "cw1031_IS_TOP_LEVEL",
@@ -1947,7 +1947,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam"
 		},
 		{
 			"name" : "pico_sdk_BINARY_DIR",
@@ -1959,7 +1959,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/pico-sdk"
+			"value" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/pico-sdk"
 		},
 		{
 			"name" : "pico_sdk_IS_TOP_LEVEL",

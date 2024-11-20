@@ -1,6 +1,6 @@
 CMakeFiles/cw1031.dir/buzzer.c.obj: \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/buzzer.c \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/includes/buzzer.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/buzzer.c \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/includes/buzzer.h \
  /usr/include/newlib/math.h /usr/include/newlib/sys/reent.h \
  /usr/include/newlib/_ansi.h /usr/include/newlib/newlib.h \
  /usr/include/newlib/_newlib_version.h /usr/include/newlib/sys/config.h \
@@ -17,9 +17,9 @@ CMakeFiles/cw1031.dir/buzzer.c.obj: \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  /usr/include/newlib/assert.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
  /opt/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
  /opt/pico-sdk/src/boards/include/boards/pico.h \
  /opt/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /opt/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \

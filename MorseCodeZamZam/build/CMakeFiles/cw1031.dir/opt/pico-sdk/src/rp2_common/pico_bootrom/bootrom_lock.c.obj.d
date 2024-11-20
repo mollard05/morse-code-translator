@@ -12,9 +12,9 @@ CMakeFiles/cw1031.dir/opt/pico-sdk/src/rp2_common/pico_bootrom/bootrom_lock.c.ob
  /usr/include/newlib/sys/features.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
  /opt/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
  /opt/pico-sdk/src/boards/include/boards/pico.h \
  /opt/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /opt/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \

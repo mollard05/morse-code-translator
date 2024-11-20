@@ -1,5 +1,5 @@
 CMakeFiles/cw1031.dir/morse_code.c.obj: \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/morse_code.c \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/morse_code.c \
  /usr/include/newlib/stdio.h /usr/include/newlib/_ansi.h \
  /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \
  /usr/include/newlib/sys/config.h /usr/include/newlib/machine/ieeefp.h \
@@ -25,9 +25,9 @@ CMakeFiles/cw1031.dir/morse_code.c.obj: \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdbool.h \
  /usr/include/newlib/assert.h \
  /usr/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/version.h \
  /opt/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build/generated/pico_base/pico/config_autogen.h \
  /opt/pico-sdk/src/boards/include/boards/pico.h \
  /opt/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
  /opt/pico-sdk/src/rp2040/pico_platform/include/pico/platform.h \
@@ -67,8 +67,8 @@ CMakeFiles/cw1031.dir/morse_code.c.obj: \
  /opt/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/resets.h \
  /opt/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/resets.h \
  /opt/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/includes/seven_segment.h \
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/includes/seven_segment.h \
  /opt/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h \
  /opt/pico-sdk/src/rp2040/hardware_structs/include/hardware/structs/pwm.h \
  /opt/pico-sdk/src/rp2040/hardware_regs/include/hardware/regs/pwm.h \
- /user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/includes/buzzer.h
+ /user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/includes/buzzer.h

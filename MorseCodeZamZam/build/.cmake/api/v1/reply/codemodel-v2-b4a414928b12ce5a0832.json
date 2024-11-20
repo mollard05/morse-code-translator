@@ -1296,7 +1296,7 @@
 				{
 					"directoryIndex" : 20,
 					"id" : "bs2_default::@efaae0dfea37ab6992ce",
-					"jsonFile" : "target-bs2_default-Debug-fb8a42ed827a5210b622.json",
+					"jsonFile" : "target-bs2_default-Debug-361a2954b731a4e0c981.json",
 					"name" : "bs2_default",
 					"projectIndex" : 1
 				},
@@ -1317,7 +1317,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "cw1031::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-cw1031-Debug-7459986bed2bb8686f9c.json",
+					"jsonFile" : "target-cw1031-Debug-7163f4cb154c223cc0f7.json",
 					"name" : "cw1031",
 					"projectIndex" : 0
 				},
@@ -1341,8 +1341,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam/build",
-		"source" : "/user/HS400/zw00954/Documents/com1031/Coursework/zam/MorseCodeZamZam"
+		"build" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam/build",
+		"source" : "/user/HS400/ms04317/Documents/COM1031/coursework/zam3/test-project-internal/MorseCodeZamZam"
 	},
 	"version" : 
 	{
