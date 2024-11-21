@@ -5,7 +5,6 @@
 #include "includes/seven_segment.h"
 #include "hardware/pwm.h"
 #include "includes/buzzer.h"
-//#include "includes/poteniometer.h"
 
 #define BUTTON_PIN  		16	// Pin 21 (GPIO 15)
 #define BUTTON_PIN_TWO        14           
@@ -51,11 +50,9 @@ void angelasIfStatement();
 void outputEight();
 void setUpRGB();
 void showRGB(int r, int g);
-//void buzzer_init();
 void playNote(unsigned int frequency, unsigned int length);
 int countElementWord();
 void addToWord(char value);
-//void setPotentiometer();
 
 void potential();
 
@@ -81,7 +78,6 @@ int main() {
 	timer_hw->dbgpause = 0;
 	stdio_init_all();
      buzzer_init();
-    // potentiometer_init();
 
 	// Initialise the seven segment display.
 	seven_segment_init();
@@ -108,11 +104,7 @@ int main() {
     resetArray(2);
     potential();
 
-    //setPotentiometer();
-
 	while (true) {
-		// printArray();
-
 		notPressedCounter = 0;
 
 		while (gpio_get(BUTTON_PIN) == false) { //loop continues until button is pressed again 
@@ -138,7 +130,7 @@ int main() {
 
 		decoder(pressed);
 
-          if (totalTime >= maxTime * 20){
+          if (totalTime >= maxTime * 20){///////////////////////////////////timing is fucked
                printf("Error! - too long to input letter\n");
                outputEight();
                totalTime = 0;
@@ -146,6 +138,8 @@ int main() {
 
                //what happens when exeedes the max time?
           }
+          printf("%d", maxTime);
+          printf("%d", totalTime);
 	}
 	
 }
@@ -160,19 +154,13 @@ void welcomeMessage() {
 	seven_segment_off();
 }
 
-// void setPotentiometer() {
-//      int value = potentiometer_read(3);
-//      printf("Potentiometer set to %d", value);
-// }
 
 void decoder(int pressed){
     if (pressed > 0){
 		if (pressed < 5){
 			//dot or dash loop
-//			printf("\nThis is a dot!");
 			addToArray(1);
 		} else if (pressed < 14){
-//			printf("\nThis is a dash!");
 			addToArray(2);
 		} else {
             outputEight();
@@ -188,13 +176,8 @@ void decoder(int pressed){
 void checkButton(int notPressed){
 	if (notPressed > 8){
           totalTime = 0;
-//		printf("\nThis is an inter-letter gap!");
 		angelasIfStatement();
-          // printArray();
-		// resetArray();
-        //removes all values of array
 	} else {
-//		printf("\nThis is a inter_signal gap!");
 	}
 
 }
@@ -219,14 +202,12 @@ int countElementWord() {
 
 void printArray() {
 	//print the array in form 0 0 0 0
-	//printf("\n");
 	for (int i = 0; i < 4; i++) {
           if (letterArray[i] == 1) {
                playNote(255, 75);
           } else if (letterArray[i] == 2) {
                playNote(150, 200);
           }
-		//printf("%d ",wordString[i]);
 	}
 }
 
@@ -246,7 +227,13 @@ void resetArray(int decision) {
 void addToArray(int value) {
 	//adds parameter value into array
 	//might need to add some validation incase its a 1 or a 2
-	letterArray[countElement()] = value;
+     if (countElement() == 4){
+          printf("\nError - too many inputs");
+          outputEight();
+          resetArray(1);
+     } else{
+     	letterArray[countElement()] = value;
+     }
 }
 void addToWord(char value) {
 	//adds parameter value into array
@@ -266,7 +253,6 @@ void showRGB(int r, int g) {
     pwm_set_gpio_level(R, ~(MAX_PWM_LEVEL * r / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
     pwm_set_gpio_level(G, ~(MAX_PWM_LEVEL * g / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
     pwm_set_gpio_level(B, ~(MAX_PWM_LEVEL * 0 / MAX_COLOUR_VALUE * BRIGHTNESS / 100));
- //   printf("\nShowing rgb: %u %u %u",r, g, 0);
 }
 
 void playNote(unsigned int frequency, unsigned int length) {
@@ -281,18 +267,18 @@ void playNote(unsigned int frequency, unsigned int length) {
 void potential(){
      potValue1 = potValue;
      printf("\nPick a value for the number of seconds to input each letter");
-     printf("\npress right button to confirm time");
+     printf("\nPress right button to confirm time");
      
      // Read the potentiometer (numers between 2-4).
      while (gpio_get(BUTTON_PIN_TWO) == false) {
           potValue1 = potValue;
           potValue = potentiometer_read(2) + 2;
           if (potValue != potValue1){
-		     	printf("\nnumber of seconds: %d\n", potValue);
+		     	printf("\nNumber of seconds: %d", potValue);
 	     }
           sleep_ms(50);
      }
-     printf("you may now input morse code!");
+     printf("You may now input morse code!");
      maxTime = potValue;
 
 }
@@ -303,11 +289,8 @@ void angelasIfStatement() {
      bool isCorrect = false;
      bool isEmpty = false;
 	int count = countElement();
-//	printf("%d ",count);
-  	
+
      if (count == 1) {
-//        printf("\nzoe");
- //       printf("\n%d",letterArray[0]);
   	    if (letterArray[0] == 1) {
             isCorrect = true; 
             seven_segment_show(4);
@@ -496,7 +479,6 @@ void angelasIfStatement() {
             // calls Z
        }
    } else if (letterArray[0] == 0 && letterArray[1] == 0 && letterArray[2] == 0 && letterArray[3] == 0) {
-//	     printf("\nNothing has been inputted right now!");
           isCorrect = true;
           isEmpty = true;
           //if nothing is inputted
@@ -504,7 +486,6 @@ void angelasIfStatement() {
 
      if (isCorrect == false && isEmpty == false) {
        printf("\nError! - invalid input");
-       //resetArray(2);
        outputEight();
        showRGB(255,0);
        // displays error
@@ -518,18 +499,16 @@ void angelasIfStatement() {
           //displays letter for longer if something has been inputted
      }
 
-     // printArray();
      resetArray(1);
 
      if (wordString[3] != 0) {
           printf("\n");
           for (int i = 0; i < 4; i++) {
                printf("%c", wordString[i]);
-               // printf("%d", i);
           }
           resetArray(2);
           printf("\n");
-          for (int i = 0; i < 5; i++){     
+          for (int i = 0; i < 4; i++){     
                playNote(500,100);
                playNote(400,100);
           }
@@ -545,11 +524,13 @@ void angelasIfStatement() {
                     sleep_ms(300);
                     showRGB(0,0);
                     totalTime = 0;
+                    printf("\nYou may now input morse code!");
                } else if (gpio_get(BUTTON_PIN_TWO)){
                     p = true;
                     showRGB(255,0);
                     sleep_ms(300);
                     showRGB(0,0);
+                    printf("\nProgram terminated");
                     exit(1);
                }
           }
@@ -558,9 +539,5 @@ void angelasIfStatement() {
      sleep_ms(50);
      showRGB(0,0);
      seven_segment_off();
+     totalTime = 0;
 }
-
-//set code to change with potentiometer
-// no input array is very sensitive and will show error in middle of word - reset to be after each bottom is pressed??
-
-//gives negative feedback buzz if the user fails to input within the allotted time;
