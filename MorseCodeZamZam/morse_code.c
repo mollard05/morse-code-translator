@@ -7,13 +7,14 @@
 #include "includes/buzzer.h"
 
 #define BUTTON_PIN  		16	// Pin 21 (GPIO 15)
-#define BUTTON_PIN_TWO        14           
+#define BUTTON_PIN_TWO        14   // Pin 19 (GPIO 14)
 #define BUZZER_PIN            17   // Pin 22 (GPIO 17)
 
+// RGB LED colours plugged in
 #define R 13
 #define G 12
 #define B 11
-
+// RGB Levels
 #define BRIGHTNESS 25
 #define MAX_COLOUR_VALUE 255
 #define MAX_PWM_LEVEL 65535
@@ -30,8 +31,8 @@ int totalTime = 0;
 unsigned int potValue = 0;
 unsigned int potValue1 = 0;
 
-int letterArray[4]; //can be changed to 4 if Angela's if statement works with count
-char wordString[4];
+int letterArray[4]; //counts dots and dashes of each letter
+char wordString[4]; //counts each letter of a 4 letter input
 
 // --------------------------------------------------------------------
 // declare the function definitions, e.g, decoder(...); and ther functions
@@ -113,10 +114,11 @@ int main() {
 			notPressedCounter += 1;
 			if (notPressedCounter > 8){
 				//set array to be 0 so the if statements work
+                    totalTime += 1;
 				break;
 			}
-               totalTime += 1;
 			sleep_ms(50);
+               totalTime += 1; //adds to total time for letter when not pressed
 		}
 
 		checkButton(notPressed); 		
@@ -124,22 +126,19 @@ int main() {
 		while (gpio_get(BUTTON_PIN)) {
 			pressed = pressed + 1;
 			notPressed = 0;
-               totalTime += 1;
 			sleep_ms(50);
+               totalTime += 1; //adds to total time for letter when pressed
 		}
 
 		decoder(pressed);
 
-          if (totalTime >= maxTime * 20){///////////////////////////////////timing is fucked
-               printf("Error! - too long to input letter\n");
+          if (totalTime >= maxTime * 20){
+               printf("\nError! - too long to input letter\n");
                outputEight();
                totalTime = 0;
-               resetArray(2);
-
-               //what happens when exeedes the max time?
+               resetArray(1);
           }
-          printf("%d", maxTime);
-          printf("%d", totalTime);
+          totalTime += 1;
 	}
 	
 }
@@ -167,19 +166,17 @@ void decoder(int pressed){
             showRGB(255,0);
             printf("\nError! - signal pressed for too long!");
             resetArray(1);
+            totalTime = 0;
             //if button pressed for too long, outputs an error
         }
 	}
-	// a function to be implemented
 }
 
 void checkButton(int notPressed){
 	if (notPressed > 8){
-          totalTime = 0;
+          //totalTime = 0;
 		angelasIfStatement();
-	} else {
 	}
-
 }
 
 int countElement() {
@@ -231,6 +228,7 @@ void addToArray(int value) {
           printf("\nError - too many inputs");
           outputEight();
           resetArray(1);
+          totalTime = 0;
      } else{
      	letterArray[countElement()] = value;
      }
@@ -278,7 +276,7 @@ void potential(){
 	     }
           sleep_ms(50);
      }
-     printf("You may now input morse code!");
+     printf("\nYou may now input morse code!");
      maxTime = potValue;
 
 }
@@ -486,11 +484,13 @@ void angelasIfStatement() {
 
      if (isCorrect == false && isEmpty == false) {
        printf("\nError! - invalid input");
+       totalTime = 0;
        outputEight();
        showRGB(255,0);
        // displays error
      } else if (isCorrect == true && isEmpty == false) {
        showRGB(0,255);
+       totalTime = 0;
        printArray();
      }
 	   
@@ -539,5 +539,4 @@ void angelasIfStatement() {
      sleep_ms(50);
      showRGB(0,0);
      seven_segment_off();
-     totalTime = 0;
 }
